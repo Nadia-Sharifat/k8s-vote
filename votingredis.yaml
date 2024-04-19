@@ -4,7 +4,6 @@ metadata:
   labels:
     app: redis
   name: redis
-  namespace: voting-app
 spec:
   replicas: 1
   selector:
@@ -21,12 +20,6 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
-        volumeMounts:
-        - mountPath: /data
-          name: redis-data
-      volumes:
-      - name: redis-data
-        emptyDir: {} 
 ---
 apiVersion: v1
 kind: Service

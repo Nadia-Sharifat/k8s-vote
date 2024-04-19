@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-pv
+  namespace: voting-app
+spec:
+  volumes:
+    - name: html-data
+      persistentVolumeClaim:
+        claimName: pvc1
+   #- name: config
+   #    emptyDir or hostPath  ***+++***   eachone can be used
+  containers:
+    - name: container-1
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: http-server
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: html-data
