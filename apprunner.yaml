@@ -2,5 +2,12 @@ version: 1.0
 
 runtime: python3
 build:
-  buildCommand: "pip install -r requirements.txt"
-  runtimeCommand: "python app.py"
+  commands:
+    - pip install -r requirements.txt
+  env:
+    - ENVIRONMENT=production
+
+run:
+  command: python app.py
+  env:
+    - PORT=8080
